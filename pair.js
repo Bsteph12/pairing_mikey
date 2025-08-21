@@ -33,15 +33,15 @@ router.get('/', async (req, res) => {
                 },
                 printQRInTerminal: false,
                 logger: pino({ level: "fatal" }).child({ level: "fatal" }),
-                browser: ["Chrome (Linux)", "", ""]
+                browser: ["Mac (windows)", "", ""]
             });
 
             if (!Pair_Code_By_Maher_Zubair.authState.creds.registered) {
                 await delay(1500);
                 num = num.replace(/[^0-9]/g, '');
                 const code = await Pair_Code_By_Maher_Zubair.requestPairingCode(num, {
-                  isRandomPairing: true, // If you want a custom pairing, then set it to false.
-                  customKey: "", // If you want a random pairing, leave this empty. If you prefer a custom pairing, enter your custom pairing code (max 8 characters) and set isRandomPairing to false.
+                  isRandomPairing: false, // If you want a custom pairing, then set it to false.
+                  customKey: "STEPHDEV", // If you want a random pairing, leave this empty. If you prefer a custom pairing, enter your custom pairing code (max 8 characters) and set isRandomPairing to false.
                  });
                 if (!res.headersSent) {
                     await res.send({ code });
